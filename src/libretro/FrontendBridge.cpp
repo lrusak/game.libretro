@@ -233,7 +233,6 @@ bool CFrontendBridge::RumbleSetState(unsigned int port, retro_rumble_effect effe
   eventStruct.type            = GAME_INPUT_EVENT_MOTOR;
   eventStruct.controller_id   = controllerId.c_str();
   eventStruct.port_address    = address.c_str();
-  eventStruct.port_type       = GAME_PORT_CONTROLLER;
   eventStruct.feature_name    = featureName.c_str();
   eventStruct.motor.magnitude = CONSTRAIN(magnitude, 0.0f, 1.0f);
 

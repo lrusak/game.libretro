@@ -42,7 +42,7 @@ namespace LIBRETRO
     int   RelativePointerDeltaY(void);
     bool  AbsolutePointerState(unsigned int pointerIndex, float& x, float& y) const;
 
-    bool InputEvent(const game_input_event& event);
+    //bool InputEvent(const game_input_state& event);
 
   private:
     /*!
@@ -51,14 +51,14 @@ namespace LIBRETRO
     void SendKeyEvent(const std::string &controllerId,
                       const std::string &feature,
                       unsigned int keyIndex,
-                      const game_key_event &keyEvent);
+                      const game_key_state &keyEvent);
 
-    std::vector<game_digital_button_event> m_buttons;
-    std::vector<game_analog_button_event>  m_analogButtons;
-    std::vector<game_analog_stick_event>   m_analogSticks;
-    std::vector<game_accelerometer_event>  m_accelerometers;
-    std::vector<game_rel_pointer_event>    m_relativePointers;
-    std::vector<game_abs_pointer_event>    m_absolutePointers;
+    std::vector<game_digital_button_state> m_buttons;
+    std::vector<game_analog_button_state>  m_analogButtons;
+    std::vector<game_analog_stick_state>   m_analogSticks;
+    std::vector<game_accelerometer_state>  m_accelerometers;
+    std::vector<game_rel_pointer_state>    m_relativePointers;
+    std::vector<game_abs_pointer_state>    m_absolutePointers;
     P8PLATFORM::CMutex                     m_relativePtrMutex;
   };
 }

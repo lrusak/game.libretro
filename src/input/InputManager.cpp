@@ -222,6 +222,7 @@ void CInputManager::EnableAnalogSensors(unsigned int port, bool bEnabled)
   // TODO
 }
 
+/*
 bool CInputManager::InputEvent(const game_input_event& event)
 {
   std::string controllerId = event.controller_id != nullptr ? event.controller_id : "";
@@ -274,6 +275,7 @@ bool CInputManager::InputEvent(const game_input_event& event)
 
   return bHandled;
 }
+*/
 
 void CInputManager::LogInputDescriptors(const retro_input_descriptor* descriptors) const
 {

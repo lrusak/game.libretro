@@ -601,7 +601,7 @@ game_input_port *CControllerTopology::GetPorts(const std::vector<PortPtr> &portV
     for (unsigned int i = 0; i < portCount; i++)
     {
       ports[i].type = portVec[i]->type;
-      ports[i].port_id = portVec[i]->portId.c_str();
+      ports[i].port_id = const_cast<char*>(portVec[i]->portId.c_str());
 
       unsigned int deviceCount = 0;
       ports[i].accepted_devices = GetControllers(portVec[i]->accepts, deviceCount);
@@ -623,7 +623,7 @@ game_input_device *CControllerTopology::GetControllers(const std::vector<Control
 
     for (unsigned int i = 0; i < deviceCount; i++)
     {
-      devices[i].controller_id = controllerVec[i]->controllerId.c_str();
+      devices[i].controller_id = const_cast<char*>(controllerVec[i]->controllerId.c_str());
 
       unsigned int portCount = 0;
       devices[i].available_ports = GetPorts(controllerVec[i]->ports, portCount);

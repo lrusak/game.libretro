@@ -527,14 +527,6 @@ bool ConnectController(bool connect, const char *port_address, const char* contr
   return false;
 }
 
-bool InputEvent(const game_input_event* event)
-{
-  if (!event)
-    return false;
-
-  return CInputManager::Get().InputEvent(*event);
-}
-
 size_t SerializeSize(void)
 {
   if (!CLIENT)

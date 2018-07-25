@@ -174,6 +174,7 @@ bool CLibretroDeviceInput::AbsolutePointerState(unsigned int pointerIndex, float
   return bSuccess;
 }
 
+/*
 bool CLibretroDeviceInput::InputEvent(const game_input_event& event)
 {
   const std::string strControllerId = event.controller_id ? event.controller_id : "";
@@ -306,11 +307,12 @@ bool CLibretroDeviceInput::InputEvent(const game_input_event& event)
 
   return false;
 }
+*/
 
 void CLibretroDeviceInput::SendKeyEvent(const std::string &controllerId,
                                         const std::string &feature,
                                         unsigned int keyIndex,
-                                        const game_key_event &keyEvent)
+                                        const game_key_state &keyEvent)
 {
   // Report key to client
   CClientBridge* clientBridge = CLibretroEnvironment::Get().GetClientBridge();
