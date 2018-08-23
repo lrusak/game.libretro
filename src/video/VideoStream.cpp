@@ -77,7 +77,7 @@ uintptr_t CVideoStream::GetHwFramebuffer()
   if (m_frontend == nullptr)
     return 0;
 
-  if (m_streamType != GAME_STREAM_HW_FRAMEBUFFER)
+  if (m_stream == nullptr || m_streamType != GAME_STREAM_HW_FRAMEBUFFER)
     return 0;
 
   if (!m_framebuffer)
