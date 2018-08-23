@@ -63,5 +63,7 @@ namespace LIBRETRO
     GAME_STREAM_TYPE m_streamType = GAME_STREAM_UNKNOWN;
     GAME_PIXEL_FORMAT m_format = GAME_PIXEL_FORMAT_UNKNOWN; // Guard against libretro changing formats
     std::unique_ptr<game_stream_buffer> m_framebuffer;
+
+    game_stream_hw_framebuffer_properties m_hwFrameBufferProps;
   };
 }

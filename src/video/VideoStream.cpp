@@ -61,15 +61,7 @@ void CVideoStream::EnableHardwareRendering(const game_stream_hw_framebuffer_prop
   if (m_frontend == nullptr)
     return;
 
-  CloseStream();
-
-  game_stream_properties streamProps{};
-
-  streamProps.type = GAME_STREAM_HW_FRAMEBUFFER;
-  streamProps.hw_framebuffer = properties;
-
-  m_stream = m_frontend->OpenStream(streamProps);
-  m_streamType = GAME_STREAM_HW_FRAMEBUFFER;
+  m_hwFrameBufferProps = properties;
 }
 
 uintptr_t CVideoStream::GetHwFramebuffer()
@@ -77,15 +69,23 @@ uintptr_t CVideoStream::GetHwFramebuffer()
   if (m_frontend == nullptr)
     return 0;
 
+  if (m_stream == nullptr)
+  {
+    game_stream_properties properties{};
+
+    properties.type = GAME_STREAM_HW_FRAMEBUFFER;
+    properties.hw_framebuffer = m_hwFrameBufferProps;
+
+    m_stream = m_frontend->OpenStream(properties);
+    m_streamType = GAME_STREAM_HW_FRAMEBUFFER;
+  }
+
   if (m_stream == nullptr || m_streamType != GAME_STREAM_HW_FRAMEBUFFER)
-    return 0;
+    return false;
 
   if (!m_framebuffer)
   {
     m_framebuffer.reset(new game_stream_buffer{});
-
-    if (!m_frontend->GetStreamBuffer(m_stream, 0, 0, *m_framebuffer))
-      return 0;
   }
 
   return m_framebuffer->hw_framebuffer.framebuffer;
